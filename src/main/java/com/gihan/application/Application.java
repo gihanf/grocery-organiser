@@ -1,6 +1,6 @@
-package com.gihan;
+package com.gihan.application;
 
-import com.gihan.dao.CustomerRepository;
+import com.gihan.repository.CustomerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

@@ -1,4 +1,4 @@
-package com.gihan.dao;
+package com.gihan.repository;
 
 import com.gihan.model.Customer;
 import org.springframework.data.jpa.repository.Query;
