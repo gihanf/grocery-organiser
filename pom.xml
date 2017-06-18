@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gihan</groupId>
-    <artifactId>spring-boot-template</artifactId>
+    <artifactId>grocery-organiser</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
 
