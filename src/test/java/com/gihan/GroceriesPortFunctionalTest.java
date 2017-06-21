@@ -35,4 +35,10 @@ public class GroceriesPortFunctionalTest {
         ShoppingList shoppingList = shoppingLists.get(0);
         assertThat(shoppingList.getStore(), is(Store.ALDI));
     }
+
+    @Test
+    public void shouldReturn_Two_ShoppingLists_WhenProductsBelongToDifferentSupermarkets() {
+
+    }
+
 }
