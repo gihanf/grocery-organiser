@@ -28,7 +28,7 @@ public class GroceriesPortFunctionalTest {
 
     @Test
     public void shouldReturn_Single_ShoppingList_WhenAllProductsBelongToOneSupermarket() throws Exception {
-        HashSet<Product> aldiOnlyGroceries = new HashSet<>(Arrays.asList(new Product("Chick Peas", 1), new Product("Tuna can", 1)));
+        HashSet<Product> aldiOnlyGroceries = new HashSet<>(Arrays.asList(new Product("Chick Peas", 1), new Product("Tuna Can", 1)));
 
         List<ShoppingList> shoppingLists = groceriesPort.generateShoppingList(aldiOnlyGroceries);
         assertThat(shoppingLists.size(), is(1));
@@ -38,7 +38,11 @@ public class GroceriesPortFunctionalTest {
 
     @Test
     public void shouldReturn_Two_ShoppingLists_WhenProductsBelongToDifferentSupermarkets() {
+        HashSet<Product> mixedGroceries = new HashSet<>(Arrays.asList(new Product("Apples", 1), new Product("Tuna Can", 1)));
+        List<ShoppingList> shoppingLists = groceriesPort.generateShoppingList(mixedGroceries);
+        assertThat(shoppingLists.size(), is(2));
 
+        // TODO: Make this test stronger
     }
 
 }
