@@ -43,7 +43,7 @@ public class Product {
             return Store.GREEN_GROCER;
         }
 
-        return Store.IGA;
+        return Store.UNKNOWN;
     }
 
     @Override
