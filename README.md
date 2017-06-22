@@ -10,3 +10,4 @@ TODO
 [x] Product preferences should ideally be sourced from an external file. In tests, could use test property file
 [ ] Separate the 'find preferred store' method into a different port, covered by a separate test?
 [ ] Perhaps the 'find preferred store' method only needs a product name not a whole product
+[ ] Remove the hardcoding of preferred products in java
