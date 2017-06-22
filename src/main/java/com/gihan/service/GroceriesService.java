@@ -3,7 +3,7 @@ package com.gihan.service;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.assertj.core.util.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gihan.model.Product;
@@ -16,6 +16,9 @@ public class GroceriesService implements GroceriesPort {
 
     private final static Set<String> ALDI_PRODUCTS = new HashSet<>(Arrays.asList("Chick Peas", "Tuna Can"));
 
+    @Autowired
+    private StorePreferenceService storePreferenceService;
+
     @Override
     public List<ShoppingList> generateShoppingList(Set<Product> groceries) {
         ArrayList<Product> products = new ArrayList<>(groceries);
@@ -26,8 +29,11 @@ public class GroceriesService implements GroceriesPort {
         List<ShoppingList> shoppingLists = stores.stream()
                 .map(store -> new ShoppingList(store, productsByStore.get(store)))
                 .collect(Collectors.toList());
-//        ShoppingList list = new ShoppingList(Store.ALDI, products);
-//        return Collections.singletonList(list);
         return shoppingLists;
+    }
+
+    @Override
+    public Store findPreferredStore(Product product) {
+        return storePreferenceService.determinePreferredStoreForProduct(product);
     }
 }
