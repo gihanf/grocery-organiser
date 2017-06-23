@@ -15,8 +15,6 @@ import com.gihan.port.StorePreferencePort;
 @Service
 public class GroceriesService implements GroceriesPort {
 
-    private final static Set<String> ALDI_PRODUCTS = new HashSet<>(Arrays.asList("Chick Peas", "Tuna Can"));
-
     @Autowired
     private StorePreferencePort storePreferencePort;
 
@@ -24,7 +22,7 @@ public class GroceriesService implements GroceriesPort {
     public List<ShoppingList> generateShoppingList(Set<Product> groceries) {
         ArrayList<Product> products = new ArrayList<>(groceries);
         Map<Store, List<Product>> productsByStore = products.stream()
-                .collect(Collectors.groupingBy(Product::getPreferredSupermarket));
+                .collect(Collectors.groupingBy(this::findPreferredStore));
 
         Set<Store> stores = productsByStore.keySet();
         List<ShoppingList> shoppingLists = stores.stream()
