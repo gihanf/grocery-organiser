@@ -1,4 +1,4 @@
-package com.gihan;
+package com.gihan.config;
 
 
 import org.springframework.context.annotation.Bean;
