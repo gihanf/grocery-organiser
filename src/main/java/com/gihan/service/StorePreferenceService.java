@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.gihan.model.Product;
 import com.gihan.model.Store;
+import com.gihan.port.StorePreferencePort;
 
 @Service
-public class StorePreferenceService {
+public class StorePreferenceService implements StorePreferencePort {
 
     @Value("#{'${aldi.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Aldi;
@@ -17,7 +18,8 @@ public class StorePreferenceService {
     @Value("#{'${udaya.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Udaya;
 
-    public Store determinePreferredStoreForProduct(Product product) {
+    @Override
+    public Store getPreferredStoreForProduct(Product product) {
         if (isProductInList(product, productsPreferablyBoughtAt_Aldi)) {
             return Store.ALDI;
         }

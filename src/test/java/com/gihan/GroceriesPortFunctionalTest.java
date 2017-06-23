@@ -12,7 +12,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.gihan.application.Application;
@@ -22,9 +22,8 @@ import com.gihan.model.Store;
 import com.gihan.port.GroceriesPort;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = Application.class)
+@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 public class GroceriesPortFunctionalTest {
-
     private final static Product ALDI_1 = new Product("Chick Peas", 1);
     private final static Product ALDI_2 = new Product("Tuna Can", 1);
     private final static Product ALDI_3 = new Product("Pasta", 1);
@@ -66,30 +65,6 @@ public class GroceriesPortFunctionalTest {
         assertThat(shoppingLists.size(), is(2));
         ShoppingList unknownList = shoppingLists.stream().filter(list -> list.getStore().equals(Store.UNKNOWN)).findFirst().get();
         assertThat(unknownList.getItems(), is(singletonList(UNKNOWN_1)));
-    }
-
-    @Test
-    public void shouldReturn_Aldi_asPreferredStoreForProduct() {
-        Store preferredStore = groceriesPort.findPreferredStore(ALDI_3);
-        assertThat(preferredStore, is(Store.ALDI));
-    }
-
-    @Test
-    public void shouldReturn_GreenGrocer_asPreferredStoreForProduct() throws Exception {
-        Store preferredStore = groceriesPort.findPreferredStore(UDAYA_1);
-        assertThat(preferredStore, is(Store.UDAYA));
-    }
-
-    @Test
-    public void shouldReturn_Unknown_asPreferredStoreForProduct_WhenProductHasNoPreference() throws Exception {
-        Store preferredStore = groceriesPort.findPreferredStore(UNKNOWN_1);
-        assertThat(preferredStore, is(Store.UNKNOWN));
-    }
-
-    @Test
-    public void shouldReturn_Aldi_whenProductNameCaseDoesNotMatchAldiProductList() throws Exception {
-        Store preferredStore = groceriesPort.findPreferredStore(new Product(ALDI_1.getName().toUpperCase(), 1));
-        assertThat(preferredStore, is(Store.ALDI));
     }
 
 }
