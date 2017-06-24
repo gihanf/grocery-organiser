@@ -10,13 +10,13 @@ import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
 import com.gihan.port.GroceriesPort;
-import com.gihan.port.StorePreferencePort;
+import com.gihan.port.StorePort;
 
 @Service
 public class GroceriesService implements GroceriesPort {
 
     @Autowired
-    private StorePreferencePort storePreferencePort;
+    private StorePort storePort;
 
     @Override
     public List<ShoppingList> generateShoppingList(Set<Product> groceries) {
@@ -33,6 +33,6 @@ public class GroceriesService implements GroceriesPort {
 
     @Override
     public Store findPreferredStore(Product product) {
-        return storePreferencePort.getPreferredStoreForProduct(product);
+        return storePort.getPreferredStoreForProduct(product);
     }
 }

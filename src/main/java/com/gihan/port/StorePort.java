@@ -5,7 +5,7 @@ import java.util.List;
 import com.gihan.model.Product;
 import com.gihan.model.Store;
 
-public interface StorePreferencePort {
+public interface StorePort {
 
     Store getPreferredStoreForProduct(Product product);
 

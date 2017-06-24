@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.gihan.model.Product;
 import com.gihan.model.Store;
-import com.gihan.port.StorePreferencePort;
+import com.gihan.port.StorePort;
 import com.gihan.service.productsorter.AldiProductSorter;
 import com.gihan.service.productsorter.GreenGrocerProductSorter;
 
 @Service
-public class StorePreferenceService implements StorePreferencePort {
+public class StoreService implements StorePort {
 
     @Value("#{'${aldi.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Aldi;

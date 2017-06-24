@@ -19,27 +19,24 @@ import org.mockito.runners.MockitoJUnitRunner;
 import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
-import com.gihan.port.StorePreferencePort;
+import com.gihan.port.StorePort;
 import com.gihan.service.GroceriesService;
+import com.gihan.service.GroceryTestBase;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroceriesPortFunctionalTest {
-    private final static Product ALDI_1 = new Product("Chick Peas", 1);
-    private final static Product ALDI_2 = new Product("Tuna Can", 1);
-    private final static Product GREEN_GROCER_1 = new Product("Apples", 1);
-    private final static Product UNKNOWN_1 = new Product("Bath Salt", 1);
+public class GroceriesPortFunctionalTest extends GroceryTestBase {
 
     @InjectMocks
     private GroceriesService groceriesService;
 
     @Mock
-    private StorePreferencePort storePreferencePort;
+    private StorePort storePort;
 
     @Test
     public void shouldReturn_Single_ShoppingList_WhenAllProductsBelongToOneSupermarket() throws Exception {
         HashSet<Product> aldiOnlyGroceries = new HashSet<>(Arrays.asList(ALDI_1, ALDI_2));
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(aldiOnlyGroceries);
         assertThat(shoppingLists.size(), is(1));
@@ -50,9 +47,9 @@ public class GroceriesPortFunctionalTest {
     @Test
     public void shouldReturn_Two_ShoppingLists_WhenProductsBelongToDifferentSupermarkets() {
         HashSet<Product> mixedGroceries = new HashSet<>(Arrays.asList(GREEN_GROCER_1, ALDI_1, ALDI_2));
-        when(storePreferencePort.getPreferredStoreForProduct(GREEN_GROCER_1)).thenReturn(Store.GREEN_GROCER);
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(GREEN_GROCER_1)).thenReturn(Store.GREEN_GROCER);
+        when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
 
@@ -66,9 +63,9 @@ public class GroceriesPortFunctionalTest {
     @Test
     public void shouldCreateListWithUnknownStore_WhenThereIsNoPreferenceForProduct() {
         HashSet<Product> mixedGroceries = new HashSet<>(Arrays.asList(ALDI_1, ALDI_2, UNKNOWN_1));
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
-        when(storePreferencePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
-        when(storePreferencePort.getPreferredStoreForProduct(UNKNOWN_1)).thenReturn(Store.UNKNOWN);
+        when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
+        when(storePort.getPreferredStoreForProduct(UNKNOWN_1)).thenReturn(Store.UNKNOWN);
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
         assertThat(shoppingLists.size(), is(2));

@@ -15,24 +15,24 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.gihan.application.Application;
 import com.gihan.model.Product;
 import com.gihan.model.Store;
-import com.gihan.port.StorePreferencePort;
+import com.gihan.port.StorePort;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
-public class StoreProductSortingServiceTest extends GroceryTestBase {
+public class StoreShoppingOrderServiceTest extends GroceryTestBase {
 
     @Autowired
-    private StorePreferencePort storePreferencePort;
+    private StorePort storePort;
 
     @Test
     public void shouldReturn_SameNumberOfProductsWhenListIsSorted() throws Exception {
-        List<Product> sortedProducts = storePreferencePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_1, ALDI_2, ALDI_3));
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_1, ALDI_2, ALDI_3));
         assertThat(sortedProducts.size(), is(3));
     }
 
     @Test
     public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_ALDI() throws Exception {
-        List<Product> sortedProducts = storePreferencePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2));
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2));
 
         List<Product> expectedSortedProducts = asList(ALDI_1, ALDI_2, ALDI_3, ALDI_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
@@ -40,7 +40,7 @@ public class StoreProductSortingServiceTest extends GroceryTestBase {
 
     @Test
     public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_GreenGrocer() throws Exception {
-        List<Product> sortedProducts = storePreferencePort.sortProductsInShoppingOrder(Store.GREEN_GROCER, asList(
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.GREEN_GROCER, asList(
                 GREEN_GROCER_4,
                 GREEN_GROCER_1,
                 GREEN_GROCER_3,
