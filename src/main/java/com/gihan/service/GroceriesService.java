@@ -31,8 +31,7 @@ public class GroceriesService implements GroceriesPort {
         return shoppingLists;
     }
 
-    @Override
-    public Store findPreferredStore(Product product) {
+    private Store findPreferredStore(Product product) {
         return storePort.getPreferredStoreForProduct(product);
     }
 }

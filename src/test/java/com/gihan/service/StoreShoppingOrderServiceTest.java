@@ -26,13 +26,13 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
 
     @Test
     public void shouldReturn_SameNumberOfProductsWhenListIsSorted() throws Exception {
-        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_1, ALDI_2, ALDI_3));
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(ALDI_1, ALDI_2, ALDI_3), Store.ALDI);
         assertThat(sortedProducts.size(), is(3));
     }
 
     @Test
     public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_ALDI() throws Exception {
-        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.ALDI, asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2));
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2), Store.ALDI);
 
         List<Product> expectedSortedProducts = asList(ALDI_1, ALDI_2, ALDI_3, ALDI_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
@@ -40,11 +40,12 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
 
     @Test
     public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_GreenGrocer() throws Exception {
-        List<Product> sortedProducts = storePort.sortProductsInShoppingOrder(Store.GREEN_GROCER, asList(
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
                 GREEN_GROCER_4,
                 GREEN_GROCER_1,
                 GREEN_GROCER_3,
-                GREEN_GROCER_2));
+                GREEN_GROCER_2),
+                Store.GREEN_GROCER);
 
         List<Product> expectedSortedProducts = asList(GREEN_GROCER_1, GREEN_GROCER_2, GREEN_GROCER_3, GREEN_GROCER_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));

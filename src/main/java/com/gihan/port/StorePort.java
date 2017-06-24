@@ -9,5 +9,5 @@ public interface StorePort {
 
     Store getPreferredStoreForProduct(Product product);
 
-    List<Product> sortProductsInShoppingOrder(Store store, List<Product> unsortedProducts);
+    List<Product> sortProductsInShoppingOrderForStore(List<Product> unsortedProducts, Store store);
 }

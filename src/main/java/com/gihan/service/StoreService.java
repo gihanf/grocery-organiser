@@ -18,6 +18,9 @@ public class StoreService implements StorePort {
     @Value("#{'${aldi.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Aldi;
 
+    @Value("#{'${green.grocer.preferred.products}'.split(',')}")
+    private List<String> productsPreferablyBoughtAt_GreenGrocer;
+
     @Value("#{'${udaya.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Udaya;
 
@@ -32,6 +35,9 @@ public class StoreService implements StorePort {
         if (isProductInList(product, productsPreferablyBoughtAt_Aldi)) {
             return Store.ALDI;
         }
+        if (isProductInList(product, productsPreferablyBoughtAt_GreenGrocer)) {
+            return Store.GREEN_GROCER;
+        }
         if (isProductInList(product, productsPreferablyBoughtAt_Udaya)) {
             return Store.UDAYA;
         }
@@ -40,20 +46,16 @@ public class StoreService implements StorePort {
     }
 
     @Override
-    public List<Product> sortProductsInShoppingOrder(Store store, List<Product> unsortedProducts) {
-
-        switch(store) {
+    public List<Product> sortProductsInShoppingOrderForStore(List<Product> products, Store store) {
+        switch (store) {
             case ALDI:
-                unsortedProducts.sort(aldiProductSorter);
+                products.sort(aldiProductSorter);
                 break;
             case GREEN_GROCER:
-                unsortedProducts.sort(greenGrocerProductSorter);
+                products.sort(greenGrocerProductSorter);
                 break;
         }
-//        List<Product> sortedProducts = Collections.emptyList();
-
-        return unsortedProducts;
-//        return aldiProductSorter.sortProductsInShoppingOrder(store, unsortedProducts);
+        return products;
     }
 
     private boolean isProductInList(Product product, List<String> preferredProductsForStore) {

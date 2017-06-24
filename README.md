@@ -9,6 +9,7 @@ TODO
 [ ] Add logging to file
 [x] Product preferences should ideally be sourced from an external file. In tests, could use test property file
 [x] Separate the 'find preferred store' method into a different port, covered by a separate test?
-[ ] Perhaps the 'find preferred store' method only needs a product name not a whole product
+[/] Perhaps the 'find preferred store' method only needs a product name not a whole product. Kept as product for future features
 [x] Remove the hardcoding of preferred products in java
+[ ] Flesh out all services for remaining stores, UDAYA, IGA
 [ ] Experiment and make a manual .enex file, send to email and see if it can be imported into notes

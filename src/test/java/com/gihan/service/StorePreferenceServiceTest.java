@@ -28,7 +28,13 @@ public class StorePreferenceServiceTest extends GroceryTestBase {
     }
 
     @Test
-    public void shouldReturn_GreenGrocer_asPreferredStoreForProduct() throws Exception {
+    public void shouldReturn_GreenGrocer_asPreferredStoreForProduct() {
+        Store preferredStore = storePort.getPreferredStoreForProduct(GREEN_GROCER_1);
+        assertThat(preferredStore, is(Store.GREEN_GROCER));
+    }
+
+    @Test
+    public void shouldReturn_Udaya_asPreferredStoreForProduct() throws Exception {
         Store preferredStore = storePort.getPreferredStoreForProduct(UDAYA_1);
         assertThat(preferredStore, is(Store.UDAYA));
     }
