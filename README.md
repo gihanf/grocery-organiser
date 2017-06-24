@@ -11,3 +11,4 @@ TODO
 [x] Separate the 'find preferred store' method into a different port, covered by a separate test?
 [ ] Perhaps the 'find preferred store' method only needs a product name not a whole product
 [x] Remove the hardcoding of preferred products in java
+[ ] Experiment and make a manual .enex file, send to email and see if it can be imported into notes

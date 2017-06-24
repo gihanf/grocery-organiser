@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.gihan.model.Product;
 import com.gihan.model.Store;
 import com.gihan.port.StorePreferencePort;
+import com.gihan.service.productsorter.AldiProductSorter;
+import com.gihan.service.productsorter.GreenGrocerProductSorter;
 
 @Service
 public class StorePreferenceService implements StorePreferencePort {
@@ -21,6 +23,9 @@ public class StorePreferenceService implements StorePreferencePort {
 
     @Autowired
     private AldiProductSorter aldiProductSorter;
+
+    @Autowired
+    private GreenGrocerProductSorter greenGrocerProductSorter;
 
     @Override
     public Store getPreferredStoreForProduct(Product product) {
@@ -37,17 +42,16 @@ public class StorePreferenceService implements StorePreferencePort {
     @Override
     public List<Product> sortProductsInShoppingOrder(Store store, List<Product> unsortedProducts) {
 
-        //TODO: Think about using a comparator to implement different sorting mechanisms
-//        switch(store) {
-//            case ALDI:
-//                allStoreProductNames = new ArrayList<>(productsPreferablyBoughtAt_Aldi);
-//                sortedProducts = allStoreProductNames.stream()
-//                        .filter(a -> unsortedProducts.stream()
-//                                .anyMatch(u -> u.getName().equals(a)))
-//                        .collect(Collectors.toList());
-//        }
+        switch(store) {
+            case ALDI:
+                unsortedProducts.sort(aldiProductSorter);
+                break;
+            case GREEN_GROCER:
+                unsortedProducts.sort(greenGrocerProductSorter);
+                break;
+        }
 //        List<Product> sortedProducts = Collections.emptyList();
-        unsortedProducts.sort(aldiProductSorter);
+
         return unsortedProducts;
 //        return aldiProductSorter.sortProductsInShoppingOrder(store, unsortedProducts);
     }
