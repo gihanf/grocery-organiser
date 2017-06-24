@@ -20,4 +20,7 @@ public class GroceryTestBase {
     public final static Product IGA_1 = new Product("?", 2);
 
     public final static Product UNKNOWN_1 = new Product("Bath Salt", 1);
+    public final static Product UNKNOWN_2 = new Product("Booja", 1);
+    public final static Product UNKNOWN_3 = new Product("Gunpowder", 1);
+    public final static Product UNKNOWN_4 = new Product("Cactus", 1);
 }

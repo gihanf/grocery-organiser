@@ -26,9 +26,13 @@ public class GroceriesService implements GroceriesPort {
 
         Set<Store> stores = productsByStore.keySet();
         List<ShoppingList> shoppingLists = stores.stream()
-                .map(store -> new ShoppingList(store, productsByStore.get(store)))
+                .map(store -> new ShoppingList(store, getListOfProductsSortedByShoppingOrder(productsByStore, store)))
                 .collect(Collectors.toList());
         return shoppingLists;
+    }
+
+    private List<Product> getListOfProductsSortedByShoppingOrder(Map<Store, List<Product>> productsByStore, Store store) {
+        return storePort.sortProductsInShoppingOrderForStore(productsByStore.get(store), store);
     }
 
     private Store findPreferredStore(Product product) {

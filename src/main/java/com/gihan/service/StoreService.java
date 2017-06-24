@@ -54,6 +54,7 @@ public class StoreService implements StorePort {
             case GREEN_GROCER:
                 products.sort(greenGrocerProductSorter);
                 break;
+            default:
         }
         return products;
     }

@@ -4,9 +4,12 @@ import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -34,14 +37,17 @@ public class GroceriesPortFunctionalTest extends GroceryTestBase {
 
     @Test
     public void shouldReturn_Single_ShoppingList_WhenAllProductsBelongToOneSupermarket() throws Exception {
-        HashSet<Product> aldiOnlyGroceries = new HashSet<>(Arrays.asList(ALDI_1, ALDI_2));
+        HashSet<Product> aldiOnlyGroceries = new HashSet<>(Arrays.asList(ALDI_2, ALDI_1));
+        List<Product> expectedAldiProductsInOrder = Arrays.asList(ALDI_1, ALDI_2);
         when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
         when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
+        when(storePort.sortProductsInShoppingOrderForStore(any(), any())).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(aldiOnlyGroceries);
         assertThat(shoppingLists.size(), is(1));
         ShoppingList shoppingList = shoppingLists.get(0);
         assertThat(shoppingList.getStore(), is(Store.ALDI));
+        assertThat(shoppingList.getItems().equals(expectedAldiProductsInOrder), is(true));
     }
 
     @Test
@@ -50,6 +56,8 @@ public class GroceriesPortFunctionalTest extends GroceryTestBase {
         when(storePort.getPreferredStoreForProduct(GREEN_GROCER_1)).thenReturn(Store.GREEN_GROCER);
         when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
         when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
+        when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.ALDI))).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
+        when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.GREEN_GROCER))).thenReturn(Collections.singletonList(GREEN_GROCER_1));
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
 
@@ -66,6 +74,8 @@ public class GroceriesPortFunctionalTest extends GroceryTestBase {
         when(storePort.getPreferredStoreForProduct(ALDI_1)).thenReturn(Store.ALDI);
         when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
         when(storePort.getPreferredStoreForProduct(UNKNOWN_1)).thenReturn(Store.UNKNOWN);
+        when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.ALDI))).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
+        when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.UNKNOWN))).thenReturn(Collections.singletonList(UNKNOWN_1));
 
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
         assertThat(shoppingLists.size(), is(2));

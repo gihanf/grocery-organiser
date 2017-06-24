@@ -31,6 +31,13 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
     }
 
     @Test
+    public void shouldReturn_UnmodifiedListOfProducts_WhenStoreIsUnknown() throws Exception {
+        List<Product> unsortedProducts = asList(UNKNOWN_4, UNKNOWN_1, UNKNOWN_3, UNKNOWN_2);
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(unsortedProducts, Store.UNKNOWN);
+        assertThat(sortedProducts.equals(unsortedProducts), is(true));
+    }
+
+    @Test
     public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_ALDI() throws Exception {
         List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2), Store.ALDI);
 
