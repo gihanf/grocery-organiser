@@ -12,4 +12,12 @@ TODO
 [/] Perhaps the 'find preferred store' method only needs a product name not a whole product. Kept as product for future features
 [x] Remove the hardcoding of preferred products in java
 [ ] Flesh out all services for remaining stores, UDAYA, IGA
-[ ] Experiment and make a manual .enex file, send to email and see if it can be imported into notes
+[ ] Create an integration test to make sure the context loads correctly. E.g. delete a property from application.property (prod) and context will fail to start.
+
+[ ] OCR to read handwritten text.
+    - Google docs?
+    - Tesseract is NOT great for handwritten text
+    - 
+[ ] Way of creating a checklist in the iPhone notes app automatically
+    - Workflow can automate up to creating a new plain note with text from attachment/email
+    - Experiment and make a manual .enex file, send to email and see if it can be imported into notes
