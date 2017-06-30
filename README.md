@@ -17,7 +17,7 @@ TODO
 [ ] OCR to read handwritten text.
     - Google docs?
     - Tesseract is NOT great for handwritten text
-    - 
+    - Notes plus iPhone app
 [ ] Way of creating a checklist in the iPhone notes app automatically
     - Workflow can automate up to creating a new plain note with text from attachment/email
     - Experiment and make a manual .enex file, send to email and see if it can be imported into notes

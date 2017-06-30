@@ -83,4 +83,23 @@ public class GroceriesPortFunctionalTest extends GroceryTestBase {
         assertThat(unknownList.getItems(), is(singletonList(UNKNOWN_1)));
     }
 
+    @Test
+    public void shouldParseStrings_intoListOfProducts() throws Exception {
+        List<String> shoppingListItems = Arrays.asList(
+                "freezer bags",
+                "coconut milk x 2",
+                "blueberries");
+        List<Product> products = groceriesService.createListOfProducts(shoppingListItems);
+
+        assertThat(products.size(), is(3));
+
+        Product freezerBags = new Product("freezer bags");
+        Product coconutMilk = new Product("coconut milk", 2);
+        Product blueberries = new Product("blueberries");
+
+        assertThat(products.contains(freezerBags), is(true));
+        assertThat(products.contains(coconutMilk), is(true));
+        assertThat(products.contains(blueberries), is(true));
+    }
+
 }

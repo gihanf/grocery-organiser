@@ -10,4 +10,5 @@ public interface GroceriesPort {
 
     List<ShoppingList> generateShoppingList(Set<Product> groceries);
 
+    List<Product> createListOfProducts(List<String> groceryListItems);
 }
