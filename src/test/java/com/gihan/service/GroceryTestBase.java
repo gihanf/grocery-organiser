@@ -15,12 +15,12 @@ public class GroceryTestBase {
     public final static Product GREEN_GROCER_3 = new Product("olives", 1);
     public final static Product GREEN_GROCER_4 = new Product("apples", 1);
 
-    public final static Product UDAYA_1 = new Product("Tapioca Chips", 2);
+    public final static Product UDAYA_1 = new Product("tapioca chips", 2);
 
     public final static Product IGA_1 = new Product("?", 2);
 
-    public final static Product UNKNOWN_1 = new Product("Bath Salt", 1);
-    public final static Product UNKNOWN_2 = new Product("Booja", 1);
-    public final static Product UNKNOWN_3 = new Product("Gunpowder", 1);
-    public final static Product UNKNOWN_4 = new Product("Cactus", 1);
+    public final static Product UNKNOWN_1 = new Product("bath salt", 1);
+    public final static Product UNKNOWN_2 = new Product("booja", 1);
+    public final static Product UNKNOWN_3 = new Product("gunpowder", 1);
+    public final static Product UNKNOWN_4 = new Product("cactus", 1);
 }
