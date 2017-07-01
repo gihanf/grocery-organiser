@@ -6,6 +6,7 @@ import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 
 import com.gihan.model.Product;
+import com.gihan.service.product.ProductParser;
 
 public class ProductParserTest {
 

@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import com.gihan.model.Product;
 import com.gihan.model.Store;
 import com.gihan.port.StorePort;
-import com.gihan.service.productsorter.AldiProductSorter;
-import com.gihan.service.productsorter.GreenGrocerProductSorter;
+import com.gihan.service.product.sorter.AldiProductSorter;
+import com.gihan.service.product.sorter.GreenGrocerProductSorter;
 
 @Service
 public class StoreService implements StorePort {
