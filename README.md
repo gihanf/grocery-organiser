@@ -14,6 +14,7 @@ TODO
 [ ] Flesh out all services for remaining stores, UDAYA, IGA
 [ ] Create an integration test to make sure the context loads correctly. E.g. delete a property from application.property (prod) and context will fail to start.
 [ ] How to write tests that check something was logged
+[ ] Use the shopping list printer somewhere
 
 [ ] OCR to read handwritten text.
     - Google docs?
