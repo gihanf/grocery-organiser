@@ -5,7 +5,7 @@ TODO
 [ ] Include usual javascript libraries
 [ ] Include sample web test template
 [ ] Include sample service test template
-[ ] Fix logging colours, during mvn clean install and during console output
+[x] Fix logging colours, during mvn clean install and during console output
 [ ] Add logging to file
 [x] Product preferences should ideally be sourced from an external file. In tests, could use test property file
 [x] Separate the 'find preferred store' method into a different port, covered by a separate test?
@@ -13,6 +13,7 @@ TODO
 [x] Remove the hardcoding of preferred products in java
 [ ] Flesh out all services for remaining stores, UDAYA, IGA
 [ ] Create an integration test to make sure the context loads correctly. E.g. delete a property from application.property (prod) and context will fail to start.
+[ ] How to write tests that check something was logged
 
 [ ] OCR to read handwritten text.
     - Google docs?
@@ -21,3 +22,4 @@ TODO
 [ ] Way of creating a checklist in the iPhone notes app automatically
     - Workflow can automate up to creating a new plain note with text from attachment/email
     - Experiment and make a manual .enex file, send to email and see if it can be imported into notes
+[ ] Hosting app in Amazon?
