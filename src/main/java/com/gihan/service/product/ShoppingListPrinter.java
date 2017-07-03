@@ -1,6 +1,5 @@
 package com.gihan.service.product;
 
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,6 @@ import com.gihan.model.ShoppingList;
 @Component
 public class ShoppingListPrinter {
 
-    private static final String CHECKLIST_PREFIX = "[ ] ";
     private static final String QUANTITY_SPECIFIER = " x ";
     private static final String DELIMITER = "\n";
 
@@ -20,7 +18,7 @@ public class ShoppingListPrinter {
         List<Product> items = shoppingList.getItems();
 
         String formattedProducts = items.stream().map(product -> {
-            StringBuilder builder = new StringBuilder(CHECKLIST_PREFIX);
+            StringBuilder builder = new StringBuilder();
             builder.append(product.getName());
             if (product.getQuantity() > 1) {
                 builder.append(QUANTITY_SPECIFIER).append(product.getQuantity());

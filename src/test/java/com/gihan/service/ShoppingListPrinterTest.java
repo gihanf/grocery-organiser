@@ -39,8 +39,8 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
         shoppingList = new ShoppingList(Store.ALDI, products);
         String[] lines = printer.print(shoppingList).split("\\n");
 
-        assertThat(lines[1], is("[ ] nut bars"));
-        assertThat(lines[2], is("[ ] cucumbers"));
+        assertThat(lines[1], is("nut bars"));
+        assertThat(lines[2], is("cucumbers"));
     }
 
     @Test
@@ -53,8 +53,8 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
         shoppingList = new ShoppingList(Store.ALDI, products);
         String[] lines = printer.print(shoppingList).split("\\n");
 
-        assertThat(lines[1], is("[ ] nut bars x 2"));
-        assertThat(lines[2], is("[ ] cucumbers"));
+        assertThat(lines[1], is("nut bars x 2"));
+        assertThat(lines[2], is("cucumbers"));
     }
 
     @Test
