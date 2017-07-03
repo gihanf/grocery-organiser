@@ -30,20 +30,6 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
     }
 
     @Test
-    public void shoppingListItemsShouldBeInChecklistFormat() throws Exception {
-        List<Product> products = Arrays.asList(
-                new Product("nut bars", 1),
-                new Product("cucumbers", 1)
-        );
-
-        shoppingList = new ShoppingList(Store.ALDI, products);
-        String[] lines = printer.print(shoppingList).split("\\n");
-
-        assertThat(lines[1], is("nut bars"));
-        assertThat(lines[2], is("cucumbers"));
-    }
-
-    @Test
     public void shoppingListItemsShouldIncludeQuantity_whenQuantityIsGreaterThanOne() throws Exception {
         List<Product> products = Arrays.asList(
                 new Product("nut bars", 2),
