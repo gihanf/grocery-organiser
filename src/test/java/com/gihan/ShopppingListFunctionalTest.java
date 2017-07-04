@@ -43,7 +43,7 @@ public class ShopppingListFunctionalTest extends GroceryTestBase {
         when(storePort.getPreferredStoreForProduct(ALDI_2)).thenReturn(Store.ALDI);
         when(storePort.sortProductsInShoppingOrderForStore(any(), any())).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
 
-        List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(aldiOnlyGroceries);
+        List<ShoppingList> shoppingLists = groceriesService.generateSortedShoppingLists(aldiOnlyGroceries);
         assertThat(shoppingLists.size(), is(1));
         ShoppingList shoppingList = shoppingLists.get(0);
         assertThat(shoppingList.getStore(), is(Store.ALDI));
@@ -59,7 +59,7 @@ public class ShopppingListFunctionalTest extends GroceryTestBase {
         when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.ALDI))).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
         when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.GREEN_GROCER))).thenReturn(Collections.singletonList(GREEN_GROCER_1));
 
-        List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
+        List<ShoppingList> shoppingLists = groceriesService.generateSortedShoppingLists(mixedGroceries);
 
         assertThat(shoppingLists.size(), is(2));
         ShoppingList aldiList = shoppingLists.stream().filter(list -> list.getStore().equals(Store.ALDI)).findFirst().get();
@@ -77,7 +77,7 @@ public class ShopppingListFunctionalTest extends GroceryTestBase {
         when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.ALDI))).thenReturn(Arrays.asList(ALDI_1, ALDI_2));
         when(storePort.sortProductsInShoppingOrderForStore(any(), eq(Store.UNKNOWN))).thenReturn(Collections.singletonList(UNKNOWN_1));
 
-        List<ShoppingList> shoppingLists = groceriesService.generateShoppingList(mixedGroceries);
+        List<ShoppingList> shoppingLists = groceriesService.generateSortedShoppingLists(mixedGroceries);
         assertThat(shoppingLists.size(), is(2));
         ShoppingList unknownList = shoppingLists.stream().filter(list -> list.getStore().equals(Store.UNKNOWN)).findFirst().get();
         assertThat(unknownList.getItems(), is(singletonList(UNKNOWN_1)));

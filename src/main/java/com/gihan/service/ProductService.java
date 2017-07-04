@@ -19,7 +19,7 @@ import com.gihan.port.ShoppingListPort;
 import com.gihan.service.product.ProductParser;
 
 @Component
-public class    ProductService implements ProductPort {
+public class ProductService implements ProductPort {
 
     private static final Log LOG = LogFactory.getLog(ProductService.class);
 
@@ -34,7 +34,7 @@ public class    ProductService implements ProductPort {
         try {
             List<String> lines = Files.readAllLines(listFilePath);
             List<Product> products = lines.stream().map(productParser::convertToProduct).collect(Collectors.toList());
-            shoppingListPort.generateShoppingList(new HashSet<>(products));
+            shoppingListPort.generateSortedShoppingLists(new HashSet<>(products));
             //TODO: Should print to log
             return products;
         } catch (IOException e) {
@@ -45,6 +45,6 @@ public class    ProductService implements ProductPort {
 
     @Override
     public List<Product> createListOfProducts(List<String> groceryListItems) {
-        return null;
+        return groceryListItems.stream().map(productParser::convertToProduct).collect(Collectors.toList());
     }
 }

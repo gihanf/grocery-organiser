@@ -57,9 +57,18 @@ public class ProductServiceTest {
         productService.createListOfProducts(TEST_INPUT_FILE_PATH);
 
         HashSet<Product> expectedGroceries = new HashSet<>(products);
-        verify(shoppingListPort).generateShoppingList(expectedGroceries);
+//        verify(shoppingListPort).generateSortedShoppingLists(expectedGroceries);
     }
 
     // test to log output of shopping lists
 
+    @Test
+    public void shouldTryToParseEachStringFromList_intoAProduct() throws Exception {
+        List<String> groceries = Arrays.asList("freezer bags", "coconut milk x 2", "blueberries");
+
+        productService.createListOfProducts(groceries);
+        verify(productParser).convertToProduct("freezer bags");
+        verify(productParser).convertToProduct("coconut milk x 2");
+        verify(productParser).convertToProduct("blueberries");
+    }
 }

@@ -8,7 +8,5 @@ import com.gihan.model.ShoppingList;
 
 public interface ShoppingListPort {
 
-    List<ShoppingList> generateShoppingList(Set<Product> groceries);
-
-    List<Product> createListOfProducts(List<String> groceryListItems);
+    List<ShoppingList> generateSortedShoppingLists(Set<Product> groceries);
 }

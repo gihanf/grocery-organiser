@@ -26,7 +26,7 @@ public class ShoppingListService implements ShoppingListPort {
     private ProductParser productParser;
 
     @Override
-    public List<ShoppingList> generateShoppingList(Set<Product> groceries) {
+    public List<ShoppingList> generateSortedShoppingLists(Set<Product> groceries) {
         ArrayList<Product> products = new ArrayList<>(groceries);
         Map<Store, List<Product>> productsByStore = products.stream()
                 .collect(Collectors.groupingBy(this::findPreferredStore));
@@ -36,11 +36,6 @@ public class ShoppingListService implements ShoppingListPort {
                 .map(store -> new ShoppingList(store, getListOfProductsSortedByShoppingOrder(productsByStore, store)))
                 .collect(Collectors.toList());
         return shoppingLists;
-    }
-
-    @Override
-    public List<Product> createListOfProducts(List<String> groceryListItems) {
-        return groceryListItems.stream().map(productParser::convertToProduct).collect(Collectors.toList());
     }
 
     private List<Product> getListOfProductsSortedByShoppingOrder(Map<Store, List<Product>> productsByStore, Store store) {
