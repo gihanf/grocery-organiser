@@ -15,12 +15,19 @@ TODO
 [ ] Create an integration test to make sure the context loads correctly. E.g. delete a property from application.property (prod) and context will fail to start.
 [ ] How to write tests that check something was logged
 [ ] Use the shopping list printer somewhere
+[ ] Create a controller that can receive requests for creating shopping lists
+[ ] Do a hello world example of service in AWS
+
+
+[ ] Where to host this service?
+    - Locally?
+    - AWS?
 
 [ ] OCR to read handwritten text.
-    - Google docs?
-    - Tesseract is NOT great for handwritten text
-    - Notes plus iPhone app
+    - [!] Google docs?
+    - [!] Tesseract is NOT great for handwritten text
+    - [x] Notes plus iPhone app
+    
 [ ] Way of creating a checklist in the iPhone notes app automatically
     - Workflow can automate up to creating a new plain note with text from attachment/email
     - Experiment and make a manual .enex file, send to email and see if it can be imported into notes
-[ ] Hosting app in Amazon?

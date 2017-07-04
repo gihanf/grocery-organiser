@@ -21,9 +21,9 @@ public class ProductParser {
     private static final String QUANTITY_SPECIFIER = " x ";
 
     public Product convertToProduct(String rawString) {
-        String sanitsedString = sanitiseRawString(rawString);
+        String sanitisedString = sanitiseRawString(rawString);
         Pattern p = Pattern.compile(REGEX_PRODUCT);
-        Matcher m = p.matcher(sanitsedString);
+        Matcher m = p.matcher(sanitisedString);
 
         m.matches();
         String name;
