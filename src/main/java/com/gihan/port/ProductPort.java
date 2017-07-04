@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.gihan.model.Product;
 
-public interface FilePort {
+public interface ProductPort {
 
     List<Product> createListOfProducts(Path listFilePath);
+
+    List<Product> createListOfProducts(List<String> groceryListItems);
 }

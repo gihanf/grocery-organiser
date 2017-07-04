@@ -23,14 +23,14 @@ import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
 import com.gihan.port.StorePort;
-import com.gihan.service.GroceriesService;
+import com.gihan.service.ShoppingListService;
 import com.gihan.service.GroceryTestBase;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroceriesPortFunctionalTest extends GroceryTestBase {
+public class ShopppingListFunctionalTest extends GroceryTestBase {
 
     @InjectMocks
-    private GroceriesService groceriesService;
+    private ShoppingListService groceriesService;
 
     @Mock
     private StorePort storePort;

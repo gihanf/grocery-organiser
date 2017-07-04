@@ -6,7 +6,7 @@ import java.util.Set;
 import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 
-public interface GroceriesPort {
+public interface ShoppingListPort {
 
     List<ShoppingList> generateShoppingList(Set<Product> groceries);
 

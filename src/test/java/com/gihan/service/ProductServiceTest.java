@@ -16,25 +16,25 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.gihan.model.Product;
-import com.gihan.port.GroceriesPort;
+import com.gihan.port.ShoppingListPort;
 import com.gihan.service.product.ProductParser;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GroceryFileParserTest {
+public class ProductServiceTest {
     private static final Path TEST_INPUT_FILE_PATH = Paths.get("./src/test/resources/sample-raw-shopping-list.txt");
 
     @InjectMocks
-    private GroceryFileParser groceryFileParser;
+    private ProductService productService;
 
     @Mock
     private ProductParser productParser;
 
     @Mock
-    private GroceriesPort groceriesPort;
+    private ShoppingListPort shoppingListPort;
 
     @Test
     public void shouldTryToParseEachStringFromFile_intoAProduct() throws Exception {
-        groceryFileParser.createListOfProducts(TEST_INPUT_FILE_PATH);
+        productService.createListOfProducts(TEST_INPUT_FILE_PATH);
 
         verify(productParser).convertToProduct("freezer bags");
         verify(productParser).convertToProduct("coconut milk x 2");
@@ -54,10 +54,10 @@ public class GroceryFileParserTest {
 
         List<Product> products = Arrays.asList(freezerBags, blueberries, coconutMilk);
 
-        groceryFileParser.createListOfProducts(TEST_INPUT_FILE_PATH);
+        productService.createListOfProducts(TEST_INPUT_FILE_PATH);
 
         HashSet<Product> expectedGroceries = new HashSet<>(products);
-        verify(groceriesPort).generateShoppingList(expectedGroceries);
+        verify(shoppingListPort).generateShoppingList(expectedGroceries);
     }
 
     // test to log output of shopping lists
