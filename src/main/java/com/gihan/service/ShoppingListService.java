@@ -14,16 +14,12 @@ import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
 import com.gihan.port.ShoppingListPort;
 import com.gihan.port.StorePort;
-import com.gihan.service.product.ProductParser;
 
 @Service
 public class ShoppingListService implements ShoppingListPort {
 
     @Autowired
     private StorePort storePort;
-
-    @Autowired
-    private ProductParser productParser;
 
     @Override
     public List<ShoppingList> generateSortedShoppingLists(Set<Product> groceries) {
