@@ -28,6 +28,9 @@ public class GroceriesService implements GroceriesPort {
     public List<ShoppingList> generateShoppingLists(List<String> groceryListItems) {
         List<Product> listOfProducts = productPort.createListOfProducts(groceryListItems);
         List<ShoppingList> shoppingLists = shoppingListPort.generateSortedShoppingLists(new HashSet<>(listOfProducts));
+
+        // TODO: should print shopping lists using printer
+
         LOG.info("Created the following shopping lists: ");
         LOG.info(shoppingLists);
         return shoppingLists;
