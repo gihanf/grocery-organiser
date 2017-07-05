@@ -17,7 +17,7 @@ TODO
 [ ] Use the shopping list printer somewhere
 [ ] Create a controller that can receive requests for creating shopping lists
 [ ] Do a hello world example of service in AWS
-
+[ ] Add extra service in GroceriesPort to start everything from a file
 
 [ ] Where to host this service?
     - Locally?
