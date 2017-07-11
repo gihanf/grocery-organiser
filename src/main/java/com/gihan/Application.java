@@ -1,4 +1,4 @@
-package com.gihan.application;
+package com.gihan;
 
 import java.text.SimpleDateFormat;
 

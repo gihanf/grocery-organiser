@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gihan.application.Application;
+import com.gihan.Application;
 import com.gihan.model.Product;
 import com.gihan.model.Store;
 import com.gihan.port.StorePort;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(classes = Application.class)
 public class StorePreferenceServiceTest extends GroceryTestBase {
 
     @Autowired

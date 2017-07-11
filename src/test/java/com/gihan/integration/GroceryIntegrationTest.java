@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.gihan.application.Application;
+import com.gihan.Application;
 import com.gihan.model.ShoppingList;
 import com.gihan.service.GroceriesService;
 import com.gihan.service.GroceryTestBase;
