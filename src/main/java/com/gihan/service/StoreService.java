@@ -61,6 +61,33 @@ public class StoreService implements StorePort {
 
     private boolean isProductInList(Product product, List<String> preferredProductsForStore) {
         return preferredProductsForStore.stream()
-                .anyMatch(name -> name.equalsIgnoreCase(product.getName()));
+                .anyMatch(storeSpecificProductName -> {
+                    if (matchesProductNameIgnoringCase(product, storeSpecificProductName)){
+                        return true;
+                    }
+                    if (matchesPluralFormOfProduct(product, storeSpecificProductName)) {
+                        return true;
+                    }
+                    if (matchesSingularFormOfProduct(product, storeSpecificProductName)) {
+                        return true;
+                    }
+                    return false;
+                });
+    }
+
+    private boolean matchesPluralFormOfProduct(Product product, String storeSpecificName) {
+        return storeSpecificName.concat("s").equalsIgnoreCase(product.getName());
+    }
+
+    private boolean matchesSingularFormOfProduct(Product product, String storeSpecificName) {
+        if (storeSpecificName.endsWith("s")) {
+            String singularForm = storeSpecificName.substring(0, storeSpecificName.length() - 1);
+            return singularForm.equalsIgnoreCase(product.getName());
+        }
+        return false;
+    }
+
+    private boolean matchesProductNameIgnoringCase(Product product, String storeSpecificName) {
+        return storeSpecificName.equalsIgnoreCase(product.getName());
     }
 }

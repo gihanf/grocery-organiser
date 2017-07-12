@@ -51,4 +51,18 @@ public class StorePreferenceServiceTest extends GroceryTestBase {
         assertThat(preferredStore, is(Store.ALDI));
     }
 
+    @Test
+    public void shouldMatchSingularFormOfProduct_withPluralFormOfProduct_inStorePreferenceList() throws Exception {
+        Product productSingularForm = new Product("apple");
+        Store preferredStore = storePort.getPreferredStoreForProduct(productSingularForm);
+        assertThat(preferredStore, is(Store.GREEN_GROCER));
+    }
+
+    @Test
+    public void shouldMatchPluralFormOfProduct_withSingularFormOfProduct_inStorePreferenceList() throws Exception {
+        Product productPluralForm = new Product("bananas");
+        Store preferredStore = storePort.getPreferredStoreForProduct(productPluralForm);
+        assertThat(preferredStore, is(Store.GREEN_GROCER));
+    }
+
 }
