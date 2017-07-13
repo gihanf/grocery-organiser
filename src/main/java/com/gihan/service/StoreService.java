@@ -11,6 +11,8 @@ import com.gihan.model.Store;
 import com.gihan.port.StorePort;
 import com.gihan.service.product.sorter.AldiProductSorter;
 import com.gihan.service.product.sorter.GreenGrocerProductSorter;
+import com.gihan.service.product.sorter.IgaProductSorter;
+import com.gihan.service.product.sorter.UdayaProductSorter;
 
 @Service
 public class StoreService implements StorePort {
@@ -24,11 +26,20 @@ public class StoreService implements StorePort {
     @Value("#{'${udaya.preferred.products}'.split(',')}")
     private List<String> productsPreferablyBoughtAt_Udaya;
 
+    @Value("#{'${iga.preferred.products}'.split(',')}")
+    private List<String> productsPreferablyBoughtAt_Iga;
+
     @Autowired
     private AldiProductSorter aldiProductSorter;
 
     @Autowired
     private GreenGrocerProductSorter greenGrocerProductSorter;
+
+    @Autowired
+    private UdayaProductSorter udayaProductSorter;
+
+    @Autowired
+    private IgaProductSorter igaProductSorter;
 
     @Override
     public Store getPreferredStoreForProduct(Product product) {
@@ -40,6 +51,9 @@ public class StoreService implements StorePort {
         }
         if (isProductInList(product, productsPreferablyBoughtAt_Udaya)) {
             return Store.UDAYA;
+        }
+        if (isProductInList(product, productsPreferablyBoughtAt_Iga)) {
+            return Store.IGA;
         }
 
         return Store.UNKNOWN;
@@ -53,6 +67,12 @@ public class StoreService implements StorePort {
                 break;
             case GREEN_GROCER:
                 products.sort(greenGrocerProductSorter);
+                break;
+            case UDAYA:
+                products.sort(udayaProductSorter);
+                break;
+            case IGA:
+                products.sort(igaProductSorter);
                 break;
             default:
         }

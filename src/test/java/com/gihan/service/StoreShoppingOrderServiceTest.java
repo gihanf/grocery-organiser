@@ -38,8 +38,13 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
     }
 
     @Test
-    public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_ALDI() throws Exception {
-        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(ALDI_4, ALDI_1, ALDI_3, ALDI_2), Store.ALDI);
+    public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_Aldi() throws Exception {
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
+                ALDI_4,
+                ALDI_1,
+                ALDI_3,
+                ALDI_2),
+                Store.ALDI);
 
         List<Product> expectedSortedProducts = asList(ALDI_1, ALDI_2, ALDI_3, ALDI_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
@@ -55,6 +60,32 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
                 Store.GREEN_GROCER);
 
         List<Product> expectedSortedProducts = asList(GREEN_GROCER_1, GREEN_GROCER_2, GREEN_GROCER_3, GREEN_GROCER_4);
+        assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
+    }
+
+    @Test
+    public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_Udaya() throws Exception {
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
+                UDAYA_4,
+                UDAYA_1,
+                UDAYA_3,
+                UDAYA_2),
+                Store.UDAYA);
+
+        List<Product> expectedSortedProducts = asList(UDAYA_1, UDAYA_2, UDAYA_3, UDAYA_4);
+        assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
+    }
+
+    @Test
+    public void shouldReturnProductsSorted_InTheirLogicalPurchaseOrder_for_Iga() throws Exception {
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
+                IGA_4,
+                IGA_1,
+                IGA_3,
+                IGA_2),
+                Store.IGA);
+
+        List<Product> expectedSortedProducts = asList(IGA_1, IGA_2, IGA_3, IGA_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
     }
 }

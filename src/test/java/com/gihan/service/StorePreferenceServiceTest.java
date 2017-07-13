@@ -40,6 +40,12 @@ public class StorePreferenceServiceTest extends GroceryTestBase {
     }
 
     @Test
+    public void shouldReturn_Iga_asPreferredStoreForProduct() throws Exception {
+        Store preferredStore = storePort.getPreferredStoreForProduct(IGA_1);
+        assertThat(preferredStore, is(Store.IGA));
+    }
+
+    @Test
     public void shouldReturn_Unknown_asPreferredStoreForProduct_WhenProductHasNoPreference() throws Exception {
         Store preferredStore = storePort.getPreferredStoreForProduct(UNKNOWN_1);
         assertThat(preferredStore, is(Store.UNKNOWN));
