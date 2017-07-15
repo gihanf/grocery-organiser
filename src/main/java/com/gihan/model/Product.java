@@ -5,14 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class Product {
-
-    private final static Set<String> ALDI_PRODUCTS = new HashSet<>(Arrays.asList("Chick Peas", "Tuna Can"));
-    private final static Set<String> GREEN_GROCER_PRODUCTS = new HashSet<>(Arrays.asList("Apples", "Bananas"));
 
     private String name;
     private int quantity;
@@ -33,17 +26,6 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
-    }
-
-    public Store getPreferredSupermarket() {
-        if (ALDI_PRODUCTS.contains(this.getName())) {
-            return Store.ALDI;
-        }
-        if (GREEN_GROCER_PRODUCTS.contains(this.getName())) {
-            return Store.GREEN_GROCER;
-        }
-
-        return Store.UNKNOWN;
     }
 
     @Override

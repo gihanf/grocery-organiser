@@ -1,4 +1,0 @@
-#CREATE DATABASE lsf2;
-#CREATE USER 'lsf2user'@'localhost' IDENTIFIED BY 'lsf2pass';
-#GRANT ALL PRIVILEGES ON lsf2.* TO 'lsf2user'@'localhost' WITH GRANT OPTION;
-#GRANT ALL PRIVILEGES ON *.lsf2 TO 'lsf2user'@'%' WITH GRANT OPTION;
