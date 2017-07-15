@@ -67,7 +67,7 @@ public class GroceriesControllerTest {
     }
 
     @Test
-    public void shouldPrintMultipleShoppingLists() throws Exception {
+    public void shouldPrintMultipleShoppingLists_withNewLineBetweenLists() throws Exception {
         List<String> groceries = Arrays.asList("nut bars", "beans");
         ShoppingListRequestDTO dto = new ShoppingListRequestDTO(groceries);
         List<Product> aldiProducts = singletonList(new Product("nut bars"));
@@ -80,7 +80,7 @@ public class GroceriesControllerTest {
         Mockito.when(mockGroceriesPort.generateShoppingLists(any()))
                 .thenReturn(shoppingLists);
 
-        String expectedList = "ALDI\nnut bars\nGREEN_GROCER\nbeans\n";
+        String expectedList = "ALDI\nnut bars\n\nGREEN_GROCER\nbeans\n";
         mockMvc.perform(post(URL_TO_CREATE_SHOPPING_LISTS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(dto)))

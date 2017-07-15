@@ -27,6 +27,6 @@ public class ShoppingListPrinter {
             return builder.toString();
         }).collect(Collectors.joining());
 
-        return shoppingList.getStore().toString() + DELIMITER + formattedProducts;
+        return shoppingList.getStore().getDisplayName() + DELIMITER + formattedProducts;
     }
 }

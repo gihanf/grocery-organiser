@@ -20,13 +20,13 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
     private ShoppingList shoppingList;
 
     @Test
-    public void shouldPrintStoreAsFirstLine() throws Exception {
-        List<Product> products = Collections.singletonList(ALDI_1);
+    public void shouldPrintStoreDisplayNameAsFirstLine() throws Exception {
+        List<Product> products = Collections.singletonList(GREEN_GROCER_1);
 
-        shoppingList = new ShoppingList(Store.ALDI, products);
+        shoppingList = new ShoppingList(Store.GREEN_GROCER, products);
 
         String[] lines = printer.print(shoppingList).split("\\n");
-        assertThat(lines[0], is("ALDI"));
+        assertThat(lines[0], is("GREEN GROCER"));
     }
 
     @Test

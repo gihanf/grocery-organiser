@@ -19,6 +19,8 @@ import com.gihan.service.product.ShoppingListPrinter;
 @Controller
 public class GroceriesController {
 
+    private static final String NEW_LINE_DELIMITER = "\n";
+
     @Autowired
     private GroceriesPort groceriesPort;
 
@@ -29,8 +31,7 @@ public class GroceriesController {
     @ResponseBody
     public String createShoppingList(@RequestBody ShoppingListRequestDTO dto) {
         List<ShoppingList> shoppingLists = groceriesPort.generateShoppingLists(dto.getGroceries());
-        String lists = shoppingLists.stream().map(shoppingListPrinter::print).collect(Collectors.joining());
-        return lists;
+        return shoppingLists.stream().map(shoppingListPrinter::print).collect(Collectors.joining(NEW_LINE_DELIMITER));
     }
 
 }
