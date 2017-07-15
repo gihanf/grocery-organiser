@@ -80,7 +80,7 @@ public class GroceriesControllerTest {
         Mockito.when(mockGroceriesPort.generateShoppingLists(any()))
                 .thenReturn(shoppingLists);
 
-        String expectedList = "ALDI\nnut bars\n\nGREEN_GROCER\nbeans\n";
+        String expectedList = "ALDI\nnut bars\n\nGREEN GROCER\nbeans\n";
         mockMvc.perform(post(URL_TO_CREATE_SHOPPING_LISTS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(dto)))
