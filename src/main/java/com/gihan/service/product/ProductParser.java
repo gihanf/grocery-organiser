@@ -12,6 +12,7 @@ import com.gihan.model.Product;
 public class ProductParser {
 
     /* REGEXP explanation
+        Product format: <word>[ x <quantity>]
         ".+?(?= x )" - matches all characters preceding the string " x "
         " x "        - matches the string literally
         "\d*"        - match any digit character multiple times
