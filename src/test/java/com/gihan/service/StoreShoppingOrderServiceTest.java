@@ -88,4 +88,32 @@ public class StoreShoppingOrderServiceTest extends GroceryTestBase {
         List<Product> expectedSortedProducts = asList(IGA_1, IGA_2, IGA_3, IGA_4);
         assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
     }
+
+    @Test
+    public void shouldReturnProductsSorted_WhenAProductIsMatchedOn_PluralForm() throws Exception {
+        Product greenGrocer3_singular = new Product("olive");
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
+                GREEN_GROCER_4,
+                GREEN_GROCER_1,
+                greenGrocer3_singular,
+                GREEN_GROCER_2),
+                Store.GREEN_GROCER);
+
+        List<Product> expectedSortedProducts = asList(GREEN_GROCER_1, GREEN_GROCER_2, greenGrocer3_singular, GREEN_GROCER_4);
+        assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
+    }
+
+    @Test
+    public void shouldReturnProductsSorted_WhenAProductIsMatchedOn_SingularForm() throws Exception {
+        Product aldi4_plural = new Product("pastas");
+        List<Product> sortedProducts = storePort.sortProductsInShoppingOrderForStore(asList(
+                aldi4_plural,
+                ALDI_1,
+                ALDI_3,
+                ALDI_2),
+                Store.ALDI);
+
+        List<Product> expectedSortedProducts = asList(ALDI_1, ALDI_2, ALDI_3, aldi4_plural);
+        assertThat("products were not in their expected order", sortedProducts.equals(expectedSortedProducts), is(true));
+    }
 }

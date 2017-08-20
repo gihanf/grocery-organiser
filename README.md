@@ -32,6 +32,7 @@ Implementation Goals
 [x] Do a hello world example of service in AWS
 [ ] Add extra service in GroceriesPort to start everything from a file
 [ ] put this command somewhere. curl -d '@data.json' -H "Content-Type: application/json" -X POST http://localhost:8886/createShoppingList
+[ ] In each store product sorter, make them implement an interface 'productNameAware'? have common methods here..
 
 Deployment Goals
 [ ] Where to host this service?
