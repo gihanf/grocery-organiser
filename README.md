@@ -12,8 +12,8 @@
 
 #### Feature Goals
 - [ ] Handwriting recognition to convert image -> list of unsorted groceries
-    - [!] Google docs?
-    - [!] Tesseract is NOT great for handwritten text
+    - [ ] Google docs?
+    - [ ] Tesseract is NOT great for handwritten text
     - [x] Notes plus iPhone app
 - [ ] Import produced shopping list into 'notes' app with checklist format
     - [ ] Use 'Workflows' to macro this task
@@ -24,7 +24,7 @@
 #### Implementation Goals
 - [x] Product preferences should ideally be sourced from an external file. In tests, could use test property file
 - [x] Separate the 'find preferred store' method into a different port, covered by a separate test?
-- [/] Perhaps the 'find preferred store' method only needs a product name not a whole product. Kept as product for future features
+- [x] Perhaps the 'find preferred store' method only needs a product name not a whole product. Kept as product for future features
 - [x] Remove the hardcoding of preferred products in java
 - [x] Flesh out all services for remaining stores, UDAYA, IGA. Look at storeService, sorter classes
 - [x] Create an integration test to make sure the context loads correctly. E.g. delete a property from application.property (prod) and context will fail to start.
@@ -37,7 +37,7 @@
 
 #### Deployment Goals
 - [ ] Where to host this service?
-    - [/] Locally (not viable)
+    - [ ] Locally (not viable)
     - [x] AWS EC2 (good until 12 months of free tier expire)
     - [ ] AWS Lambda (only if required, and only if not doing the standalone phone app)
     - [ ] IOS phone app communicating with external server (e.g. AWS)
