@@ -53,7 +53,7 @@ public class StorePreferenceServiceTest extends GroceryTestBase {
 
     @Test
     public void shouldReturn_Aldi_whenProductNameCaseDoesNotMatchAldiProductList() throws Exception {
-        Store preferredStore = storePort.getPreferredStoreForProduct(new Product(ALDI_1.getName().toUpperCase(), 1));
+        Store preferredStore = storePort.getPreferredStoreForProduct(new Product(ALDI_1.getName().toUpperCase(), 1, null));
         assertThat(preferredStore, is(Store.ALDI));
     }
 

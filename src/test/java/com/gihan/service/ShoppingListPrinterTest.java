@@ -32,8 +32,8 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
     @Test
     public void shoppingListItemsShouldIncludeQuantity_whenQuantityIsGreaterThanOne() throws Exception {
         List<Product> products = Arrays.asList(
-                new Product("nut bars", 2),
-                new Product("cucumbers", 1)
+                new Product("nut bars", 2, null),
+                new Product("cucumbers", 1, null)
         );
 
         shoppingList = new ShoppingList(Store.ALDI, products);

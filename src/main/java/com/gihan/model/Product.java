@@ -1,5 +1,6 @@
 package com.gihan.model;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -9,14 +10,20 @@ public class Product {
 
     private String name;
     private int quantity;
+    private String variant;
 
-    public Product(String name, int quantity) {
+    public Product(String name, int quantity, String variant) {
         this.name = name;
         this.quantity = quantity;
+        this.variant = StringUtils.isNotEmpty(variant) ? variant : "";
     }
 
     public Product(String name) {
-        this(name, 1);
+        this(name, 1, "");
+    }
+
+    public Product(String name, String variant) {
+        this(name, 1, variant);
     }
 
     public String getName() {
@@ -25,6 +32,10 @@ public class Product {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getVariant() {
+        return variant;
     }
 
     @Override

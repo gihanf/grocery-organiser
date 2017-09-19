@@ -18,6 +18,8 @@ public class ProductService implements ProductPort {
 
     @Override
     public List<Product> createListOfProducts(List<String> groceryListItems) {
-        return groceryListItems.stream().map(productParser::convertToProduct).collect(Collectors.toList());
+        return groceryListItems.stream()
+                .map(productParser::convertToProduct)
+                .collect(Collectors.toList());
     }
 }

@@ -71,4 +71,23 @@ public class ProductParserTest {
         assertThat(product.getName(), is("oranges"));
     }
 
+    @Test
+    public void shouldParse_descriptionWithVariant_andNoExplicitQuantity() throws Exception {
+        String description = "chocolate (dark)";
+
+        Product product = parser.convertToProduct(description);
+        assertThat(product.getName(), is("chocolate"));
+        assertThat(product.getVariant(), is("(dark)"));
+        assertThat(product.getQuantity(), is(1));
+    }
+
+    @Test
+    public void shouldParse_descriptionWithVariant_andAnExplicitQuantity() throws Exception {
+        String description = "chocolate (dark) x 3";
+
+        Product product = parser.convertToProduct(description);
+        assertThat(product.getName(), is("chocolate"));
+        assertThat(product.getVariant(), is("(dark)"));
+        assertThat(product.getQuantity(), is(3));
+    }
 }
