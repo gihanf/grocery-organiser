@@ -35,7 +35,7 @@ public class GroceryIntegrationTest extends GroceryTestBase {
 
     @Test
     public void shouldReturnTwo_ShoppingLists_whenGroceriesAreFromDifferentStores() throws Exception {
-        List<String> groceries = Arrays.asList("nut bars", "wheat bix", "beans");
+        List<String> groceries = Arrays.asList("nut bars (cranberry)", "wheat bix", "beans");
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingLists(groceries);
 
         assertThat(shoppingLists.size(), is(2));
