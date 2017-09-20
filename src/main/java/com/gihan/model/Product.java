@@ -3,11 +3,11 @@ package com.gihan.model;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class Product {
 
+    private static final String QUANTITY_SPECIFIER = " x ";
+    private static final String DELIMITER = "\n";
     private String name;
     private int quantity;
     private String variant;
@@ -50,6 +50,17 @@ public class Product {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+        StringBuilder builder = new StringBuilder();
+        builder.append(name);
+
+        if (StringUtils.isNotEmpty(variant)) {
+            builder.append(" ");
+            builder.append(variant);
+        }
+        if (quantity > 1) {
+            builder.append(QUANTITY_SPECIFIER).append(quantity);
+        }
+        builder.append(DELIMITER);
+        return builder.toString();
     }
 }

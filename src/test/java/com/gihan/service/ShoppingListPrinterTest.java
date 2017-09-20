@@ -1,10 +1,10 @@
 package com.gihan.service;
 
+import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -14,14 +14,14 @@ import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
 import com.gihan.service.product.ShoppingListPrinter;
 
-public class ShoppingListPrinterTest extends GroceryTestBase{
+public class ShoppingListPrinterTest extends GroceryTestBase {
 
     private ShoppingListPrinter printer = new ShoppingListPrinter();
     private ShoppingList shoppingList;
 
     @Test
     public void shouldPrintStoreDisplayNameAsFirstLine() throws Exception {
-        List<Product> products = Collections.singletonList(GREEN_GROCER_1);
+        List<Product> products = singletonList(GREEN_GROCER_1);
 
         shoppingList = new ShoppingList(Store.GREEN_GROCER, products);
 
@@ -44,8 +44,18 @@ public class ShoppingListPrinterTest extends GroceryTestBase{
     }
 
     @Test
+    public void shoppingListItemsShouldInclude_variant_ifThereIsOne() throws Exception {
+        List<Product> products = singletonList(new Product("chick peas", 2, "(canned)"));
+
+        shoppingList = new ShoppingList(Store.ALDI, products);
+        String[] lines = printer.print(shoppingList).split("\\n");
+
+        assertThat(lines[1], is("chick peas (canned) x 2"));
+    }
+
+    @Test
     public void printedShoppingListShouldEndWithANewline() throws Exception {
-        List<Product> products = Collections.singletonList(ALDI_1);
+        List<Product> products = singletonList(ALDI_1);
 
         shoppingList = new ShoppingList(Store.ALDI, products);
 
