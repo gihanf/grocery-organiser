@@ -29,7 +29,7 @@ import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
 import com.gihan.port.GroceriesPort;
-import com.gihan.service.product.ShoppingListPrinter;
+import com.gihan.service.ShoppingListPrinter;
 import com.google.gson.Gson;
 
 @RunWith(SpringRunner.class)

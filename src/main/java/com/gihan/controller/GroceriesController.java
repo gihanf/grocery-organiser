@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gihan.dto.ShoppingListRequestDTO;
 import com.gihan.model.ShoppingList;
 import com.gihan.port.GroceriesPort;
-import com.gihan.service.product.ShoppingListPrinter;
+import com.gihan.service.ShoppingListPrinter;
 
 @Controller
 public class GroceriesController {

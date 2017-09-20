@@ -12,7 +12,6 @@ import org.junit.Test;
 import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.model.Store;
-import com.gihan.service.product.ShoppingListPrinter;
 
 public class ShoppingListPrinterTest extends GroceryTestBase {
 

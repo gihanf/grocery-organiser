@@ -1,4 +1,4 @@
-package com.gihan.service.product;
+package com.gihan.service;
 
 import static java.util.stream.Collectors.joining;
 

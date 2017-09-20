@@ -13,6 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import com.gihan.port.ShoppingListPort;
 import com.gihan.service.product.ProductParser;
+import com.gihan.service.product.ProductService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ProductServiceTest {
