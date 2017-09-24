@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.gihan.Application;
+import com.gihan.model.Product;
 import com.gihan.model.ShoppingList;
 import com.gihan.service.GroceriesService;
 import com.gihan.service.GroceryTestBase;
@@ -39,5 +40,16 @@ public class GroceryIntegrationTest extends GroceryTestBase {
         List<ShoppingList> shoppingLists = groceriesService.generateShoppingLists(groceries);
 
         assertThat(shoppingLists.size(), is(2));
+    }
+
+    @Test
+    public void shouldReturnItems_inCorrectOrder() throws Exception {
+        List<String> groceries = Arrays.asList("pasta", "chick peas", "nut bars (choc)");
+        List<ShoppingList> shoppingLists = groceriesService.generateShoppingLists(groceries);
+
+        assertThat(shoppingLists.size(), is(1));
+        ShoppingList list = shoppingLists.get(0);
+        List<Product> items = list.getItems();
+        assertThat(items.get(0).getName(), is("nut bars "));
     }
 }
