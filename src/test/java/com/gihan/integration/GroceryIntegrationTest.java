@@ -50,6 +50,6 @@ public class GroceryIntegrationTest extends GroceryTestBase {
         assertThat(shoppingLists.size(), is(1));
         ShoppingList list = shoppingLists.get(0);
         List<Product> items = list.getItems();
-        assertThat(items.get(0).getName(), is("nut bars "));
+        assertThat(items.get(0).getName(), is("nut bars"));
     }
 }
