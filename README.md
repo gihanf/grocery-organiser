@@ -20,6 +20,7 @@
     - [ ] Experiment with producing file formats that 'notes' will recognise. E.g. .enex file, import via email
 - [ ] Make shopping lists shareable and updateable between two people (only if not intending on using the 'notes' app)
 - [ ] Feature to allow descriptive text to appear in () but not affect sorting / not be used when sorting products
+- [ ] Get the app to source the preferences list from an optional external properties file (auto refreshable too)
 
 #### Implementation Goals
 - [x] Product preferences should ideally be sourced from an external file. In tests, could use test property file
